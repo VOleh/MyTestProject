@@ -4,17 +4,21 @@ package service;
 import dao.UserDao;
 import model.User;
 
-public class  UserService<U,I> implements CR <U,I> {
+public class  UserService   implements CR <User>  {
     private UserDao dao = new UserDao();
+    private boolean check;
 
     @Override
-    public  boolean create(User u) {
-        dao.addUser(u);
-        return false;
+    public int create(User user) {
+        return dao.addUser(user);
     }
 
     @Override
-    public <I> U read(I i) {
+    public User read(int i) {
+        return null;
+    }
+
+    public User readByEmail() {
         return null;
     }
 }

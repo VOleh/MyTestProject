@@ -1,10 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
     <head>
-        <title>Login form</title>
+        <link rel="stylesheet" type="text/css" href="CSS/CSS.css">        <title>Login form</title>
+
     </head>
         <body>
-                <h3> Login form</h3>
+        <div id="divWindow">
+            <img src="Pictures/user.png" alt=""/>
+            <div class="divForm">
+            <h3> Login form</h3>
                 <form action="login" method="post">
 
                     <input type ="text" name="email" maxlenght="15"
@@ -19,5 +23,7 @@
                     <p><a href="registration.jsp"> create new account</a></p>
 
                 </form>
+            </div>
+        </div>
         </body>
 </html>

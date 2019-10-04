@@ -11,8 +11,6 @@ public class User {
     private String gender;
     private String password;
 
-
-
     private Interests interests;
     private Contacts contacts;
 

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -24,26 +25,27 @@ import java.util.Date;
 public class RegistrationServlet extends HttpServlet {
     private User user;
     private UserService service;
+    private HttpSession session;
+    private int userId;
+
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         user = new User();
         service = new UserService();
 
-        //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-
         user.setName(request.getParameter("name"));
         user.setSurname(request.getParameter("surname"));
         user.setEmail(request.getParameter("email"));
-
-       // user.setBirthday(dateFormat.format(date));
-
+        user.setBirthday(request.getParameter("date"));
         user.setGender(request.getParameter("gender"));
         user.setPassword(MD5.runMD5(request.getParameter("password")));
 
-        service.create(user);
+        userId = service.create(user);
 
-        request.getRequestDispatcher("/main.jsp").forward(request,response);
+        session = request.getSession(true);
+        session.setAttribute("id",userId);
 
+        response.sendRedirect("/contacts.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -11,13 +11,16 @@ create  table project.contacts(
     id int not null  primary key ,
     country varchar(20) ,
     town varchar(20) ,
-    phone varchar(20)
+    phone varchar(20),
+    FOREIGN KEY (id) REFERENCES user(id)
 )
+
 
 create  table project.interests(
     id int not null  primary key ,
     books varchar(255) ,
     films varchar(255) ,
     musics varchar(255) ,
-    sports varchar(255)
+    sports varchar(255),
+    FOREIGN KEY (id) REFERENCES user(id)
 )

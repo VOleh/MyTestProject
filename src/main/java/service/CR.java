@@ -1,8 +1,8 @@
 package service;
 
-import model.User;
+public interface CR <U> {
 
-interface CR <U,I> {
-     <U> boolean create(User u);
-     <I> U read(I i);
+     int create(U u);
+
+      U read(int i);
 }

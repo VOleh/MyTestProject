@@ -1,8 +1,8 @@
 package service;
 
-interface CRUD {
-     <T,U> boolean create(T t,U u);
-     <T,U> T read(U u);
-     <T,U> T update(T t, U u);
-     <T,U> boolean delete(T t, U u);
+public interface CRUD <T> {
+     boolean create(T t, int i);
+     T read(Integer i);
+     T update(T t, Integer i);
+     boolean delete(T t, Integer i);
 }

@@ -2,25 +2,32 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="CSS/CSS.css">
     <title>Interests form</title>
 </head>
 <body>
-<h3> CONTACTS FORM </h3>
+        <div id="divWindow">
 
-<form action="contacts" method="post">
+        <img src="Pictures/user (2).png" alt=""/>
 
-    <input type="text"  name="country"
-           maxlength="20" placeholder="Your home town..."/>
+            <div class="divForm">
+            <h3> CONTACTS FORM </h3>
 
+                <form action="contacts" method="post">
 
-    <input type="text"  name="town"
-           maxlength="20" placeholder="Your home town..."/>
+                    <input type="text"  name="country"
+                           maxlength="20" placeholder="Your home town..."/>
 
-    <input type="text"  name="phone"
-           maxlength="20" placeholder="Your mobilePhone..."/>
+                    <input type="text"  name="town"
+                           maxlength="20" placeholder="Your home town..."/>
 
-    <input type="submit" value="Next">
-    <input type="reset" value="Clear">
-</form>
+                    <input type="text"  name="phone"
+                           maxlength="20" placeholder="Your mobilePhone..."/>
+
+                    <input type="submit" value="Next">
+                    <input type="reset" value="Clear">
+                </form>
+            </div>
+        </div>
 </body>
 </html>

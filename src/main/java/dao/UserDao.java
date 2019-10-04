@@ -5,30 +5,43 @@ import service.UserService;
 import utils.DataBaseConnector;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLOutput;
 
 public class UserDao {
     private PreparedStatement ps;
-    public boolean addUser(User u){
+    private String generateId [] = {"id"};
+    private int id;
+    public Integer addUser(User user){
         String sql = "INSERT INTO user (name, surname, email, gender, password)  VALUES (?,?,?,?,?)";
         try {
-            ps = DataBaseConnector.createConnection().prepareStatement(sql);
-            ps.setString(1, u.getName());
-            ps.setString(2, u.getSurname());
-            ps.setString(3, u.getEmail());
-            ps.setString(4, u.getGender());
-            ps.setString(5, u.getPassword());
-            System.out.println("User from dao "+u);
-            if(ps.executeUpdate() !=0){return true;}
+            ps = DataBaseConnector.createConnection().prepareStatement(sql,generateId);
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getSurname());
+            ps.setString(3, user.getEmail());
+            ps.setString(4, user.getGender());
+            ps.setString(5, user.getPassword());
+
+
+            if(ps.executeUpdate() !=0){
+                ResultSet resultSet = ps.getGeneratedKeys();
+                if (resultSet.next()) {
+                     id = resultSet.getInt(1);
+                }
+                return id;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return null;
     }
 
-    public User findUser(){
-        String sql = "";
+
+
+
+    public User findUserByEmail(User user){
+        String sql = "Select ";
 
         return null;
     }

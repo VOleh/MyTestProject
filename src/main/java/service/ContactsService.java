@@ -1,26 +1,30 @@
 package service;
 
+import dao.ContactsDao;
 import model.Contacts;
-import model.User;
 
-public class ContactsService implements CRUD{
+public class ContactsService implements CRUD <Contacts> {
+    private ContactsDao dao = new ContactsDao();
+    private boolean check;
+
+
     @Override
-    public <Contacts,User> boolean create(Contacts t,User u) {
-        return false;
+    public boolean create(Contacts contacts, int id) {
+        return dao.add(contacts,id);
     }
 
     @Override
-    public <Contacts, User> Contacts read(User u) {
+    public Contacts read(Integer i) {
         return null;
     }
 
     @Override
-    public <Contacts,User> Contacts update(Contacts t, User u) {
+    public Contacts update(Contacts contacts, Integer i) {
         return null;
     }
 
     @Override
-    public <Contacts,User> boolean delete(Contacts t, User u) {
+    public boolean delete(Contacts contacts, Integer i) {
         return false;
     }
 }
