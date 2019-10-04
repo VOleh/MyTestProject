@@ -1,6 +1,8 @@
 package service;
 
- interface CR {
-     <U> boolean create(U u);
-     <T> T read(int id);
+public interface CR <U> {
+
+     int create(U u);
+
+      U read(int i);
 }

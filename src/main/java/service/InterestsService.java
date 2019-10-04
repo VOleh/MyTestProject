@@ -1,28 +1,28 @@
 package service;
 
+import dao.InterestsDao;
 import model.Interests;
-import model.User;
 
-public class InterestsService implements CRUD {
-
+public class InterestsService implements  CRUD <Interests>  {
+    private InterestsDao dao = new InterestsDao();
 
     @Override
-    public <Interests, User> boolean create(Interests t, User u) {
-        return false;
+    public boolean create(Interests interests, int id) {
+        return dao.add(interests,id);
     }
 
     @Override
-    public <Interests, User> Interests read(User u) {
+    public Interests read(Integer i) {
         return null;
     }
 
     @Override
-    public <Interests,User> Interests update(Interests t, User u) {
+    public Interests update(Interests interests, Integer i) {
         return null;
     }
 
     @Override
-    public <Interests,User> boolean delete(Interests t, User u) {
+    public boolean delete(Interests interests, Integer i) {
         return false;
     }
 }
