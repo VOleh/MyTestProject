@@ -3,7 +3,9 @@ package controllers;
 import model.Contacts;
 import model.Interests;
 import model.User;
+import service.UserService;
 import sun.java2d.pipe.SpanShapeRenderer;
+import utils.MD5;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,9 +23,11 @@ import java.util.Date;
 @WebServlet(name = "Registration", urlPatterns = {"/registration"})
 public class RegistrationServlet extends HttpServlet {
     private User user;
+    private UserService service;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         user = new User();
+        service = new UserService();
 
         //DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -34,9 +38,11 @@ public class RegistrationServlet extends HttpServlet {
        // user.setBirthday(dateFormat.format(date));
 
         user.setGender(request.getParameter("gender"));
-        user.setPassword(request.getParameter("password"));
+        user.setPassword(MD5.runMD5(request.getParameter("password")));
 
+        service.create(user);
 
+        request.getRequestDispatcher("/main.jsp").forward(request,response);
 
     }
 

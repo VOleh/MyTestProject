@@ -1,6 +1,8 @@
 package service;
 
- interface CR {
-     <U> boolean create(U u);
-     <T> T read(int id);
+import model.User;
+
+interface CR <U,I> {
+     <U> boolean create(User u);
+     <I> U read(I i);
 }

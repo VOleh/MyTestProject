@@ -1,15 +1,20 @@
 package service;
 
 
+import dao.UserDao;
+import model.User;
 
-public class UserService implements CR {
+public class  UserService<U,I> implements CR <U,I> {
+    private UserDao dao = new UserDao();
+
     @Override
-    public <User> boolean create(User u) {
+    public  boolean create(User u) {
+        dao.addUser(u);
         return false;
     }
 
     @Override
-    public <User> User read(int id) {
+    public <I> U read(I i) {
         return null;
     }
 }

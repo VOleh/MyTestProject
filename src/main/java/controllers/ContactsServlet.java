@@ -24,6 +24,6 @@ public class ContactsServlet extends HttpServlet {
         contacts.setHomeTown(request.getParameter("town"));
         contacts.setMobilePhone(request.getParameter("phone"));
 
-        service.create(contacts);
+        //service.create();
     }
 }

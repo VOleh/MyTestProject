@@ -24,6 +24,6 @@ public class InterestsServlet extends HttpServlet {
         interests.setMusic(request.getParameter("musics"));
         interests.setSport(request.getParameter("sports"));
 
-        service.add(interests);
+        //service.add(interests);
     }
 }
