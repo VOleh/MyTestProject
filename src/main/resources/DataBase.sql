@@ -4,8 +4,11 @@ create  table project.user(
     surname varchar(20) not null,
     email varchar(64) not null  unique ,
     gender varchar(10) not null ,
-    password varchar(50) not null
+    password varchar(50) not null,
+    role varchar (10) not null
 )
+
+SET GLOBAL time_zone = '+2:00';
 
 create  table project.contacts(
     id int not null  primary key ,
@@ -24,3 +27,4 @@ create  table project.interests(
     sports varchar(255),
     FOREIGN KEY (id) REFERENCES user(id)
 )
+

@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="CSS/CSS.css">
+    <title>interests form</title>
+</head>
 <body>
 <h3> INTERESTS FORM</h3>
 <form action="interests" method="post">

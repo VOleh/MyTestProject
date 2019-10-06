@@ -14,7 +14,9 @@ public class User {
     private Interests interests;
     private Contacts contacts;
 
-    public User(){}
+    private Role role;
+
+     public User(){}
 
     public User(String name, String surname,String email, String birthday, String gender) {
         this.name = name;
@@ -22,6 +24,16 @@ public class User {
         this.email = email;
         this.birthday = birthday;
         this.gender = gender;
+    }
+    public User(String name, String surname,String email, String birthday,
+                String gender,Interests interests, Contacts contacts) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.birthday = birthday;
+        this.gender = gender;
+        this.interests = interests;
+        this.contacts = contacts;
     }
 
     public int getUserId() {
@@ -94,6 +106,15 @@ public class User {
     public void setContacts(Contacts contacts) {
         this.contacts = contacts;
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
 
 
 

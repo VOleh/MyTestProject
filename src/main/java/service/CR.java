@@ -1,8 +1,12 @@
 package service;
 
-public interface CR <U> {
+public interface CR <User> {
 
-     int create(U u);
+     int create(User u);
 
-      U read(int i);
+      User readById(int id);
+
+      User readByLoginPassword(String login, String password);
+
+      boolean userIsExist(String login, String password);
 }

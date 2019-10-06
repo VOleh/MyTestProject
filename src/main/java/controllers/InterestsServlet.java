@@ -30,7 +30,7 @@ public class InterestsServlet extends HttpServlet {
 
         check = service.create(interests, (Integer) session.getAttribute("id"));
         if(check){
-            response.sendRedirect("/login.jsp");
+            response.sendRedirect("/");
         }else{
             request.setAttribute("remark","Some problem!!");
             request.getRequestDispatcher("/interests");

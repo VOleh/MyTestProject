@@ -12,17 +12,17 @@ public class InterestsService implements  CRUD <Interests>  {
     }
 
     @Override
-    public Interests read(Integer i) {
+    public Interests read(int i) {
         return null;
     }
 
     @Override
-    public Interests update(Interests interests, Integer i) {
+    public Interests update(Interests interests, int i) {
         return null;
     }
 
     @Override
-    public boolean delete(Interests interests, Integer i) {
+    public boolean delete(Interests interests, int i) {
         return false;
     }
 }

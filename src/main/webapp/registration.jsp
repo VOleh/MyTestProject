@@ -13,6 +13,8 @@
 
             <form action="registration" method="post">
 
+                <input type="hidden" name="role" value="USER">
+
                 <input type="text"  name="name"
                        maxlength="20" placeholder="Your name..."/>
 

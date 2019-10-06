@@ -5,8 +5,7 @@ import dao.UserDao;
 import model.User;
 
 public class  UserService   implements CR <User>  {
-    private UserDao dao = new UserDao();
-    private boolean check;
+    private final UserDao dao = new UserDao();
 
     @Override
     public int create(User user) {
@@ -14,11 +13,17 @@ public class  UserService   implements CR <User>  {
     }
 
     @Override
-    public User read(int i) {
-        return null;
+    public User readById(int id) {
+        return dao.readById(id);
     }
 
-    public User readByEmail() {
-        return null;
+    @Override
+    public User readByLoginPassword(String login, String password) {
+        return dao.readUserByLoginPassword(login,password);
+    }
+
+    @Override
+    public boolean userIsExist(String login, String password) {
+        return dao.existIsUser(login,password);
     }
 }

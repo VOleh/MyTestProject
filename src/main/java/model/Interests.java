@@ -6,6 +6,16 @@ public class Interests {
     private String music;
     private String sport;
 
+    public Interests(String films, String books, String music, String sport) {
+        this.films = films;
+        this.books = books;
+        this.music = music;
+        this.sport = sport;
+    }
+
+    public Interests() {
+    }
+
     public String getFilms() {
         return films;
     }
