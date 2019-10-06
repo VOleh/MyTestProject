@@ -2,6 +2,7 @@ package controllers;
 
 import model.Contacts;
 import model.Interests;
+import model.Role;
 import model.User;
 import service.UserService;
 import sun.java2d.pipe.SpanShapeRenderer;
@@ -23,15 +24,13 @@ import java.util.Date;
 
 @WebServlet(name = "Registration", urlPatterns = {"/registration"})
 public class RegistrationServlet extends HttpServlet {
-    private User user;
-    private UserService service;
+    private User user = new User();
+    private UserService service = new UserService();
     private HttpSession session;
     private int userId;
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        user = new User();
-        service = new UserService();
 
         user.setName(request.getParameter("name"));
         user.setSurname(request.getParameter("surname"));
@@ -39,6 +38,7 @@ public class RegistrationServlet extends HttpServlet {
         user.setBirthday(request.getParameter("date"));
         user.setGender(request.getParameter("gender"));
         user.setPassword(MD5.runMD5(request.getParameter("password")));
+        user.setRole(Role.valueOf(request.getParameter("role")));
 
         userId = service.create(user);
 

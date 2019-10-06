@@ -14,17 +14,17 @@ public class ContactsService implements CRUD <Contacts> {
     }
 
     @Override
-    public Contacts read(Integer i) {
+    public Contacts read(int i) {
         return null;
     }
 
     @Override
-    public Contacts update(Contacts contacts, Integer i) {
+    public Contacts update(Contacts contacts, int i) {
         return null;
     }
 
     @Override
-    public boolean delete(Contacts contacts, Integer i) {
+    public boolean delete(Contacts contacts, int i) {
         return false;
     }
 }

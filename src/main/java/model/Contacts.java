@@ -5,6 +5,15 @@ public class Contacts {
     private String  mobilePhone;
     private String country;
 
+    public Contacts(String homeTown, String mobilePhone, String country) {
+        this.homeTown = homeTown;
+        this.mobilePhone = mobilePhone;
+        this.country = country;
+    }
+
+    public Contacts() {
+    }
+
     public String getHomeTown() {
         return homeTown;
     }
