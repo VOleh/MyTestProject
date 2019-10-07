@@ -1,11 +1,13 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@page import="model.User"%>
+<%@ page isELIgnored="false" %>
+<%@ page import="model.User" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="true" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
     <link href="CSS/ProfilePage.css" rel="stylesheet" type="text/css"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
     <title>Profile</title>
 </head>
 <body>
@@ -36,36 +38,62 @@
             <p> GENERAL INFORMATION </p>
 
             <table>
-                <%
-                    HttpSession httpSession = request.getSession(false);
-                    User user = (User) httpSession.getAttribute("user");
-
-                %>
-                <%=user%>
                 <tr>
                     <td>My name:</td>
-                    <td>${user.getName()}</td></tr>
-                    <tr><td>My surname:</td><td></td></tr>
-                    <tr><td>Birthday:</td><td></td></tr>
-                    <tr><td>I am:</td><td></td></tr>
-                    <tr><td>Country:</td><td></td></tr>
-                </table>
+                    <td>${user.getName()}</td>
+                </tr>
+                    <tr>
+                        <td>My surname:</td>
+                        <td>${user.getSurname()}</td>
+                    </tr>
+                    <tr>
+                        <td>Birthday:</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>I am:</td>
+                        <td>${user.getGender()}</td>
+                    </tr>
+            </table>
                 <hr>
-
                 <p> CONTACTS </p>
                 <table>
-                    <tr><td>Home town:</td><td></td></tr>
-                    <tr><td>Mobile phone:</td><td></td></tr>
-                    <tr><td>Email:</td><td></td></tr>
+                    <tr>
+                        <td>Country:</td>
+                        <td>${user.getContacts().getCountry()}</td>
+                    </tr>
+                    <tr>
+                        <td>Home town:</td>
+                        <td>${user.getContacts().getHomeTown()}</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile phone:</td>
+                        <td>${user.getContacts().getMobilePhone()}</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>${user.getEmail()}</td>
+                    </tr>
                 </table>
                 <hr>
-
                 <p> INTERESTS </p>
                 <table>
-                    <tr><td>Films:</td><td></td></tr>
-                    <tr><td>Books:</td><td></td></tr>
-                    <tr><td>Music:</td><td></td></tr>
-                    <tr><td>Sport:</td><td></td></tr>
+                    <tr>
+                        <td>Films:</td>
+                        <td>${user.getInterests().getFilms()}</td>
+                    </tr>
+                    <tr>
+                        <td>Books:</td>
+                        <td>${user.getInterests().getBooks()}</td>
+                    </tr>
+                    <tr>
+                        <td>Music:</td>
+                        <td>${user.getInterests().getMusic()}</td>
+                    </tr>
+                    <tr>
+                        <td>Sport:</td>
+                        <td>${user.getInterests().getSport()}</td>
+                    </tr>
                 </table>
             </div>
 

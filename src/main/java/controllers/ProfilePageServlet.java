@@ -3,6 +3,7 @@ package controllers;
 import model.User;
 import service.UserService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +25,11 @@ public class ProfilePageServlet extends HttpServlet {
         HttpSession httpSession = request.getSession(false);
         User user = service.readById( (Integer) httpSession.getAttribute("currentId"));
 
-        httpSession.setAttribute("user",user);
+        request.setAttribute("user",user);
 
-        request.getRequestDispatcher("/main.jsp").forward(request,response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
+        dispatcher.forward(request, response);
+
+
     }
 }

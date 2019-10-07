@@ -1,3 +1,4 @@
+<%@ page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,16 +18,16 @@
             <input type="hidden" id="parameter" name="interests" value="interests"/>
 
             <label>Films:</label><br>
-            <textarea name="films" rows="10" cols="40"></textarea>
+            <textarea name="films" rows="10" cols="40">${user.getInterests().getFilms()}</textarea>
 
             <label>Books:</label><br>
-            <textarea name="books" rows="10" cols="40"></textarea>
+            <textarea name="books" rows="10" cols="40">${user.getInterests().getBooks()}</textarea>
 
             <label>Music:</label><br>
-            <textarea name="musics" rows="10" cols="40"></textarea>
+            <textarea name="musics" rows="10" cols="40">${user.getInterests().getMusic()}</textarea>
 
             <label>Sport:</label><br>
-            <textarea name="sports" rows="10" cols="40"></textarea>
+            <textarea name="sports" rows="10" cols="40">${user.getInterests().getSport()}</textarea>
 
             <input type="submit" name="submit" value="Update"/>
             <input type="reset" name="clear" value="Clear"/>
