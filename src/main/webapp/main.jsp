@@ -32,8 +32,8 @@
 
         <div class="divGeneralInform">
 
+            <img src="profilePhoto/${user.getPhoto()}" alt="" width="300" height="250"/>
 
-            <img src=width="300" height="250"/>
 
             <p> GENERAL INFORMATION </p>
 
@@ -101,12 +101,11 @@
 
                 <p>Your posts:</p>
 
-                <form action ="/Post"  method="post">
+                <form action ="/post"  method="post" enctype="multipart/form-data" >
 
-                    <textarea class="textAreaPosts" name="message"></textarea>
-
+                    <input type="text" class="textAreaPosts" name="message"></input>
+                    <input type="file" name="file" multiple />
                     <input type="submit" name="send" value="Send"/>
-
                     <input type="reset" name="clear" value="Clear"/>
                 </form>
             </div>

@@ -40,7 +40,7 @@
                    maxlength="20" value="${user.getContacts().getMobilePhone()}"/>
             <label>Email:</label><br>
             <input type="text"  name="email"
-                   maxlength="64" value="${user.getContacts().getEmail()}"/>
+                   maxlength="64" value="${user.getEmail()}"/>
 
             <input type="submit" value="Submit"/>
             <input type="reset" value="Clear"/>

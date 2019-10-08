@@ -25,7 +25,7 @@ public class ProfilePageServlet extends HttpServlet {
         HttpSession httpSession = request.getSession(false);
         User user = service.readById( (Integer) httpSession.getAttribute("currentId"));
 
-        request.setAttribute("user",user);
+        httpSession.setAttribute("user",user);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
         dispatcher.forward(request, response);

@@ -3,6 +3,7 @@ package service;
 
 import dao.UserDao;
 import model.User;
+import utils.MD5;
 
 public class  UserService   implements CR <User>  {
     private final UserDao dao = new UserDao();
@@ -19,11 +20,11 @@ public class  UserService   implements CR <User>  {
 
     @Override
     public User readByLoginPassword(String login, String password) {
-        return dao.readUserByLoginPassword(login,password);
+        return dao.readUserByLoginPassword(login,MD5.runMD5(password));
     }
 
     @Override
     public boolean userIsExist(String login, String password) {
-        return dao.existIsUser(login,password);
+        return dao.existIsUser(login, MD5.runMD5(password));
     }
 }

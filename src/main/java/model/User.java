@@ -14,24 +14,21 @@ public class User {
     private Interests interests;
     private Contacts contacts;
 
+    private String photo;
+
     private Role role;
 
      public User(){}
 
-    public User(String name, String surname,String email, String birthday, String gender) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.birthday = birthday;
-        this.gender = gender;
-    }
+
     public User(String name, String surname,String email, String birthday,
-                String gender,Interests interests, Contacts contacts) {
+                String gender,String photo,Interests interests, Contacts contacts) {
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.birthday = birthday;
         this.gender = gender;
+        this.photo = photo;
         this.interests = interests;
         this.contacts = contacts;
     }
@@ -107,6 +104,14 @@ public class User {
         this.contacts = contacts;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     public Role getRole() {
         return role;
     }
@@ -114,8 +119,6 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-
-
 
 
     @Override
@@ -130,6 +133,9 @@ public class User {
                 ", password='" + password + '\'' +
                 ", interests=" + interests +
                 ", contacts=" + contacts +
+                ", photo='" + photo + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
+
