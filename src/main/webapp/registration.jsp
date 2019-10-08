@@ -24,7 +24,7 @@
                 <input type="text" name="email"
                        maxlength="64" placeholder="Your email..."/>
 
-              <%--  <input type="date" name="birthday"> --%>
+                <input type="date" name="birthday">
 
                 <select name="gender">
                     <option value ="male">Male</option>

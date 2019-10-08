@@ -100,6 +100,7 @@ public class UserDao {
         User user = new User();
         ContactsDao contactsDao = new ContactsDao();
         InterestsDao interestsDao = new InterestsDao();
+        ProfileAvatarDao profileAvatarDao = new ProfileAvatarDao();
 
         String sql = "SELECT name, surname, email, gender FROM user  WHERE id=? ";
         try {
@@ -115,6 +116,8 @@ public class UserDao {
 
                 user.setContacts(contactsDao.read(id));
                 user.setInterests(interestsDao.read(id));
+
+                user.setPhoto(profileAvatarDao.read(id));
             }
               return user;
 

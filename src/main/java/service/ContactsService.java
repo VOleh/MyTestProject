@@ -3,13 +3,14 @@ package service;
 import dao.ContactsDao;
 import model.Contacts;
 
-public class ContactsService implements CRUD <Contacts> {
+public class ContactsService implements CRUD <Contacts,Boolean> {
     private ContactsDao dao = new ContactsDao();
     private boolean check;
 
 
     @Override
-    public boolean create(Contacts contacts, int id) {
+    public Boolean create(Contacts contacts, int id) {
+
         return dao.add(contacts,id);
     }
 

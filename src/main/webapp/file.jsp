@@ -1,3 +1,4 @@
+<%@ page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,11 +14,12 @@
             <img src="Pictures/user.png" alt=""/>
             <div class="divForm">
                 <h3>Add your photo</h3>
-                <form action="addPhoto" method="post" enctype="multipart/form-data">
-                    <input type ="file" name="photo" alt="" />
+                <form action="load" method="post" enctype="multipart/form-data">
+                    <input type ="file" name="file" alt=""/>
                     <input type="submit" name="submit" value="Next"/>
                     <input type="reset" name="clear" value="Cancel"/>
                 </form>
+                <span style="color:red;">${remark}</span><br>
             </div>
         </div>
     </body>

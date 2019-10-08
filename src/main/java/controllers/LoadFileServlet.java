@@ -1,29 +1,47 @@
 package controllers;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import service.FileLoadService;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.List;
 
-@WebServlet(name = "LoadFile",urlPatterns = "/addPhoto")
+@MultipartConfig
+@WebServlet(urlPatterns = {"/load"})
 public class LoadFileServlet extends HttpServlet {
-    private InputStream is;
-
-    private Part photo;
-    private InputStream inputStream;
-    private String resultSet_add_userPhoto;
-
+    private FileLoadService service = new FileLoadService();
+    private List<FileItem> multiFiles = null;
+    private HttpSession httpSession = null;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
 
-        photo = request.getPart("photo");
-        inputStream = photo.getInputStream();
+        List<FileItem>  multiFiles = null;
+        try {
+            multiFiles = sf.parseRequest(request);
+        } catch (FileUploadException e) {
+            e.printStackTrace();
+        }
+
+        if(service.create(multiFiles,(Integer) request.getSession(false).getAttribute("currentId"))){
+            request.getRequestDispatcher("/home").forward(request,response);
+        }else{
+            request.setAttribute("remark","You can't load your photo!Please try again");
+            request.getRequestDispatcher("/file.jsp").forward(request,response);
+        }
 
     }
 
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    }
 }

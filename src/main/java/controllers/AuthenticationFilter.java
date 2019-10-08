@@ -29,7 +29,7 @@ public class AuthenticationFilter implements Filter {
          final HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         String email = request.getParameter("email");
-        String password = MD5.runMD5(request.getParameter("password"));
+        String password = request.getParameter("password");
 
          if (service.userIsExist(email,password)) {
              User user = service.readByLoginPassword(email, password);
