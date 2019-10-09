@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+
 public class PostService  {
     private PostDao dao = new PostDao();
     private int idMessage;
@@ -21,9 +22,11 @@ public class PostService  {
                 idMessage = dao.addMessage(item.getString(),id);
 
             } else {
+                StringBuilder url = new StringBuilder(idMessage+item.getName());
                 try {
-                    item.write(new File(System.getenv("MY_PROJECT_IMG") + item.getName()+idMessage));
-                    return dao.addPhoto(item.getName(),idMessage);
+                    item.write(new File("D:/git/new/MyTestProject/src/main/webapp/profilePhoto/" + url));
+
+                    return dao.addPhoto(url.toString(),idMessage);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

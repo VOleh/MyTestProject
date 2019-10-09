@@ -18,7 +18,7 @@ public class FileLoadService {
     public boolean create( List<FileItem> multiFiles, int id) {
         try {
             for(FileItem item : multiFiles) {
-                item.write(new File(System.getenv("MY_PROJECT_IMG") + item.getName()));
+                item.write(new File("D:/git/new/MyTestProject/src/main/webapp/profilePhoto/" + item.getName()));
 
                 if(dao.add(item.getName(),id))
                     return  true;

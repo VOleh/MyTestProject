@@ -104,12 +104,11 @@
                         <table>
                             <tr>
                                 <td>
-                                    <img src="profilePhoto/${user.getPhoto()}" alt="" width="50" height="50">
-                                </td>
-                                <td>
-                                     <h>${i.getAuthor()}</h>
+                                     <p>${i.getAuthor()}</p>
                                      <h5>${i.getCreated()}</h5>
                                      <img src="profilePhoto/${i.getPhoto()}" alt="" width="300" height="250">
+                                     <h3>${i.getComments()}</h3>
+                                     <hr>
                                 </td>
                             </tr>
                         </table>

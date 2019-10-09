@@ -1,6 +1,7 @@
 package model;
 
-import java.util.List;
+
+import java.util.Date;
 
 public class Post {
     private String author;

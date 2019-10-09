@@ -32,7 +32,7 @@
             <input type="submit" name="submit" value="Update"/>
             <input type="reset" name="clear" value="Clear"/>
 
-            <a href="/home">return back</a></p>
+            <a href="${pageContext.request.contextPath}/home">return back</a></p>
         </form>
     </div>
 </div>
