@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "Servlet",urlPatterns = {"/main"})
+@WebServlet(name = "Servlet",urlPatterns = {"/home"})
 public class ProfilePageServlet extends HttpServlet {
 
     private UserService service = new UserService();
@@ -24,11 +24,16 @@ public class ProfilePageServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession httpSession = request.getSession(false);
-        User user = service.readById( (Integer) httpSession.getAttribute("currentId"));
 
-        httpSession.setAttribute("user",user);
-        httpSession.setAttribute("posts", postService.read(user.getUserId()));
+        HttpSession oldSession = request.getSession(false);
+        System.out.println("Session id "+oldSession.getAttribute("currentId"));
+        User user = service.readById( (Integer) oldSession.getAttribute("currentId"));
+        if(user !=null)
+            oldSession.invalidate();
+        HttpSession newHttpSession = request.getSession(true);
+
+        newHttpSession.setAttribute("user",user);
+        newHttpSession.setAttribute("posts", postService.read(user.getUserId()));
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
         response.setStatus(200);

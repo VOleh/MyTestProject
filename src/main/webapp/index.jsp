@@ -13,7 +13,9 @@
             <img src="Pictures/user.png" alt=""/>
             <div class="divForm">
             <h3> Login form</h3>
-                <form action="home" method="post">
+
+                <p><span style="color:red ;align-content: center"> ${remark} </span></p>
+                <form action="login" method="post">
 
                     <input type ="text" name="email" maxlenght="15"
                            placeholder="Your email..."/>

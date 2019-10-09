@@ -7,7 +7,9 @@ import utils.DataBaseConnector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -43,7 +45,7 @@ public class PostDao {
         String sql = "INSERT INTO photo (url, postId)  VALUES (?,?)";
         try {
             ps = DataBaseConnector.createConnection().prepareStatement(sql);
-            ps.setString(1, url);
+            ps.setString(1, url );
             ps.setInt(2, id);
 
             if(ps.executeUpdate() !=0){
@@ -67,8 +69,11 @@ public class PostDao {
             }
             list = new ArrayList<>();
             while(rs.next()){
-                list.add(new Post(rs.getString("name"),rs.getString("comments"),
-                        rs.getString("url"),rs.getString("created")));
+                list.add(new Post(
+                        rs.getString("name"),
+                        rs.getString("comments"),
+                        rs.getString("url"),
+                        new SimpleDateFormat("dd-MM-yyyy HH:mm").format(rs.getDate("created"))));
             }
             return  list;
 

@@ -20,11 +20,11 @@ public class  UserService   implements CR <User>  {
 
     @Override
     public User readByLoginPassword(String login, String password) {
-        return dao.readUserByLoginPassword(login,MD5.runMD5(password));
+        return dao.readUserByLoginPassword(login,password);
     }
 
     @Override
     public boolean userIsExist(String login, String password) {
-        return dao.existIsUser(login, MD5.runMD5(password));
+        return dao.existIsUser(login, password);
     }
 }

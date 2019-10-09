@@ -48,7 +48,7 @@
 
             <input type="submit" value="Submit"/>
             <input type="reset" value="Clear"/>
-            <a href="main/jsp"></a></p>
+            <a href="${pageContext.request.contextPath}/home">return back</a></p>
         </form>
     </div>
 </div>
