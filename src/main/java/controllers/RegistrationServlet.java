@@ -45,7 +45,7 @@ public class RegistrationServlet extends HttpServlet {
         session = request.getSession(true);
         session.setAttribute("id",userId);
 
-        response.sendRedirect("/file.jsp");
+        response.sendRedirect("/contacts.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

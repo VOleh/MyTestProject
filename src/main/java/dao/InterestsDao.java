@@ -58,12 +58,8 @@ public class InterestsDao {
         return null;
     }
 
-    public static void main(String[] args) {
-        InterestsDao dao = new InterestsDao();
-        System.out.println(dao.update(new Interests(),1));
-    }
 
-    public Interests update(Interests interests, int id) {
+    public boolean update(Interests interests, int id) {
         String sql = "UPDATE  interests SET books=?, films=?, musics=?, sports=?  WHERE id=?";
 
         try {
@@ -75,14 +71,12 @@ public class InterestsDao {
             ps.setInt(5, id);
 
             if(ps.executeUpdate() !=0)
-                return  read(id);
-
-
+                return  true;
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
 
 

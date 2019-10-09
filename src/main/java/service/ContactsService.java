@@ -20,12 +20,12 @@ public class ContactsService implements CRUD <Contacts,Boolean> {
     }
 
     @Override
-    public Contacts update(Contacts contacts, int i) {
-        return null;
+    public boolean update(Contacts contacts, int id) {
+        return dao.update(contacts,id);
     }
 
     @Override
-    public boolean delete(Contacts contacts, int i) {
+    public boolean delete(Contacts contacts, int id) {
         return false;
     }
 }

@@ -7,8 +7,8 @@ create  table project.user(
     password varchar(50) not null,
     role varchar (10) not null
 )
-
 SET GLOBAL time_zone = '+3:00';
+
 
 create  table project.contacts(
     id int not null  primary key ,
@@ -28,6 +28,14 @@ create  table project.interests(
     FOREIGN KEY (id) REFERENCES user(id)
 )
 
+create  table project.useravatars(
+     id int not null  primary key auto_increment ,
+     url varchar(100) ,
+     userId int not null,
+     created datetime default CURRENT_TIMESTAMP,
+     FOREIGN KEY (userId) REFERENCES user(id)
+)
+
 create  table project.post(
      id int not null  primary key auto_increment ,
      comments varchar(1000) ,
@@ -37,9 +45,11 @@ create  table project.post(
 )
 
 create  table project.photo(
-     id int not null  primary key ,
+     id int not null  primary key auto_increment  ,
      url varchar(50) ,
      postId int not null,
      FOREIGN KEY (postId) REFERENCES post(id)
 )
+
+
 

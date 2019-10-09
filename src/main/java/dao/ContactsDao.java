@@ -57,7 +57,7 @@ public class ContactsDao {
     }
 
 
-    public Contacts update(Contacts contacts, int id) {
+    public boolean update(Contacts contacts, int id) {
         String sql = "UPDATE  contacts SET country=?, town=?, phone=?  WHERE id=?";
 
         try {
@@ -68,14 +68,11 @@ public class ContactsDao {
             ps.setInt(4, id);
 
             if(ps.executeUpdate() !=0)
-                return  read(id);
-
-
-
+                return  true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
 
 

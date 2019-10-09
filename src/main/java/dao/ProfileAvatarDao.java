@@ -33,7 +33,7 @@ public class ProfileAvatarDao {
 
 
     public String read(int id) {
-        String sql = "SELECT url FROM useravatars  WHERE userId=?  order by useravatars.create desc  LIMIT 1";
+        String sql = "SELECT url FROM useravatars  WHERE userId=?  order by useravatars.created desc  LIMIT 1";
 
         try {
             ps = DataBaseConnector.createConnection().prepareStatement(sql);

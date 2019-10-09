@@ -31,18 +31,37 @@ public class AuthenticationFilter implements Filter {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-         if (service.userIsExist(email,password)) {
-             User user = service.readByLoginPassword(email, password);
 
-             HttpSession currentSession = request.getSession(true);
+        final HttpSession session = request.getSession(true);
 
-             currentSession.setAttribute("currentId",user.getUserId());
-
-             request.getRequestDispatcher("/home").forward(request,response);
+        if (nonNull(session) && nonNull(session.getAttribute("currentId"))
+                && nonNull(session.getAttribute("user"))){
+            Role role = ((User)(request.getSession(false).getAttribute("user"))).getRole();
+                moveToMenu(request,response,role);
 
         }else
-             request.getRequestDispatcher("/registration.jsp").forward(request,response);
-        filterChain.doFilter(request,response);
+         if (service.userIsExist(email,password)) {
+             User user = service.readByLoginPassword(email, password);
+             session.setAttribute("currentId",user.getUserId());
+             session.setAttribute("role",user.getRole());
+
+             moveToMenu(request,response,user.getRole());
+
+        }else
+             moveToMenu(request,response,Role.UNKNOWN);
+
+    }
+    private static void moveToMenu (HttpServletRequest request,HttpServletResponse response, Role role) throws ServletException, IOException {
+        if(role.equals(Role.USER)){
+            request.getRequestDispatcher("/main").forward(request,response);
+
+        }
+
+        else
+            if(role.equals(Role.UNKNOWN))
+                request.getRequestDispatcher("/registration.jsp").forward(request,response);
+            else
+                request.getRequestDispatcher("/").forward(request,response);
     }
 
     @Override

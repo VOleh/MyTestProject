@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,8 @@
     <img src="Pictures/user (4).png" alt=""/>
     <div class="divForm">
         <h3> Edit interests </h3>
-
-        <form action="/editInterests" method="post" >
-
+        <span style="color:green;"> <p> ${description}</p> </span>
+        <form action="/edit-interests" method="post" >
             <input type="hidden" id="parameter" name="interests" value="interests"/>
 
             <label>Films:</label><br>
@@ -32,7 +32,7 @@
             <input type="submit" name="submit" value="Update"/>
             <input type="reset" name="clear" value="Clear"/>
 
-            <a href="/main.jsp">return back</a></p>
+            <a href="/home">return back</a></p>
         </form>
     </div>
 </div>

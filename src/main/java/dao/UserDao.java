@@ -46,7 +46,7 @@ public class UserDao {
     }
 
     public User readUserByLoginPassword(String login,  String password){
-        String sql = "SELECT  id FROM project.user WHERE email=? AND password=?";
+        String sql = "SELECT  id, role FROM project.user WHERE email=? AND password=?";
         try {
             ps = DataBaseConnector.createConnection().prepareStatement(sql);
             ps.setString(1, login);
@@ -58,6 +58,7 @@ public class UserDao {
             User user = new User();
             if(rs.next()) {
                 user.setUserId(rs.getInt("id"));
+                user.setRole(Role.valueOf(rs.getString("role")));
             }
             return user;
 
@@ -102,7 +103,7 @@ public class UserDao {
         InterestsDao interestsDao = new InterestsDao();
         ProfileAvatarDao profileAvatarDao = new ProfileAvatarDao();
 
-        String sql = "SELECT name, surname, email, gender FROM user  WHERE id=? ";
+        String sql = "SELECT id, name, surname, email, gender FROM user  WHERE id=? ";
         try {
             ps = DataBaseConnector.createConnection().prepareStatement(sql,generateId);
             ps.setInt(1, id);
@@ -113,6 +114,8 @@ public class UserDao {
                 user.setSurname(rs.getString("surname"));
                 user.setEmail(rs.getString("email"));
                 user.setGender(rs.getString("gender"));
+                user.setUserId(rs.getInt("id"));
+
 
                 user.setContacts(contactsDao.read(id));
                 user.setInterests(interestsDao.read(id));

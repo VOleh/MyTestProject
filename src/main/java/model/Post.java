@@ -3,32 +3,33 @@ package model;
 import java.util.List;
 
 public class Post {
-    private User author;
+    private String author;
     private String comments;
-    private List<String> photo;
+    private String photo;
     private String created;
 
     public Post() {
     }
 
-    public Post(User author, String comments, String created) {
+
+    public Post(String author, String comments, String created) {
         this.author = author;
         this.comments = comments;
         this.created = created;
     }
 
-    public Post(User author, String comments, List<String> photo, String created) {
+    public Post(String author, String comments, String photo, String created) {
         this.author = author;
         this.comments = comments;
         this.photo = photo;
         this.created = created;
     }
 
-    public User getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
@@ -40,11 +41,11 @@ public class Post {
         this.comments = comments;
     }
 
-    public List<String> getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(List<String> photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 

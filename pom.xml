@@ -34,6 +34,25 @@
       <version>8.0.16</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/com.liferay.portal/portal-kernel -->
+    <dependency>
+      <groupId>com.liferay.portal</groupId>
+      <artifactId>portal-kernel</artifactId>
+      <version>5.2.3</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.liferay.portal/util-java -->
+    <dependency>
+      <groupId>com.liferay.portal</groupId>
+      <artifactId>util-java</artifactId>
+      <version>6.0.2</version>
+      <scope>provided</scope>
+    </dependency>
+
+
+
+
     <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
     <dependency>
       <groupId>commons-fileupload</groupId>

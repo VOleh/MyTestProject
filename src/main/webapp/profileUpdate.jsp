@@ -1,5 +1,6 @@
 <%@ page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,8 +27,14 @@
                 <td> Your gender:</td>
                 <td>${user.getGender()}</td>
             </tr>
+            <tr>
+                <td> Your email:</td>
+                <td>${user.getEmail()}</td>
+            </tr>
         </table>
-        <form action="/editProfile" method="post">
+
+        <span style="color:green;"> <p> ${description}</p> </span>
+        <form action="/edit-profile" method="post">
 
             <label>Country:</label><br>
             <input type="text"  name="country"
@@ -37,10 +44,7 @@
                    maxlength="20" value="${user.getContacts().getHomeTown()}"/>
             <label>Mobile phone:</label><br>
             <input type="text"  name="mobilePhone"
-                   maxlength="20" value="${user.getContacts().getMobilePhone()}"/>
-            <label>Email:</label><br>
-            <input type="text"  name="email"
-                   maxlength="64" value="${user.getEmail()}"/>
+                   maxlength="13" value="${user.getContacts().getMobilePhone()}"/>
 
             <input type="submit" value="Submit"/>
             <input type="reset" value="Clear"/>

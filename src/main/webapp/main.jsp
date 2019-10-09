@@ -18,7 +18,6 @@
             <li><a href="profileUpdate.jsp">My profile</a></li>
             <li><a href="file.jsp">My photo</a></li>
             <li><a href="interestsUpdate.jsp">My interests</a></li>
-            <li><a href="passwordUpdate.jsp"> Edit password</a></li>
 
             <form action="logout" method="doGet">
                 <li>
@@ -100,13 +99,28 @@
             <div class="divYourPosts">
 
                 <p>Your posts:</p>
+                <c:forEach items = "${posts}"  var="i">
+                    <div>
+                        <table>
+                            <tr>
+                                <td>
+                                    <img src="profilePhoto/${user.getPhoto()}" alt="" width="50" height="50">
+                                </td>
+                                <td>
+                                     <h>${i.getAuthor()}</h>
+                                     <h5>${i.getCreated()}</h5>
+                                     <img src="profilePhoto/${i.getPhoto()}" alt="" width="300" height="250">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
 
-                <form action ="/post"  method="post" enctype="multipart/form-data" >
+                </c:forEach>
 
-                    <input type="text" class="textAreaPosts" name="message"></input>
-                    <input type="file" name="file" multiple />
+                <form action ="/post"  method="post"  enctype="multipart/form-data" >
+                    <input type="text" class="textAreaPosts" name="message"/>
+                    <input type="file" name="file" />
                     <input type="submit" name="send" value="Send"/>
-                    <input type="reset" name="clear" value="Clear"/>
                 </form>
             </div>
         </div>

@@ -17,12 +17,12 @@ public class InterestsService implements  CRUD <Interests,Boolean>  {
     }
 
     @Override
-    public Interests update(Interests interests, int i) {
-        return null;
+    public boolean update(Interests interests, int id) {
+        return dao.update(interests,id);
     }
 
     @Override
-    public boolean delete(Interests interests, int i) {
+    public boolean delete(Interests interests, int id) {
         return false;
     }
 }
