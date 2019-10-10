@@ -51,7 +51,7 @@ public class ProfileAvatarDao {
 
     public static void main(String[] args) {
         ProfileAvatarDao dao = new ProfileAvatarDao();
-        System.out.println(dao.read(4));
+        System.out.println(dao.read(2));
     }
 
     public boolean delete(String url, int id) {

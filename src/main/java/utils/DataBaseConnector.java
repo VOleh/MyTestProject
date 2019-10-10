@@ -11,8 +11,8 @@ public class DataBaseConnector {
     public static  Connection createConnection() {
         String url = "jdbc:mysql://localhost:3306/project";
         String driver = "com.mysql.cj.jdbc.Driver";
-        String login = "oleh";
-        String passwordDataBase = "oleh";
+        String login = "root";
+        String passwordDataBase = "root";
 
         Connection connection = null;
 

@@ -1,5 +1,6 @@
 package controllers;
 
+import model.User;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -20,7 +21,7 @@ public class LoadFileServlet extends HttpServlet {
     private List<FileItem> multiFiles = null;
     private HttpSession httpSession = null;
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
 
@@ -31,8 +32,8 @@ public class LoadFileServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        if(service.create(multiFiles,(Integer) request.getSession(false).getAttribute("currentId"))){
-            request.getRequestDispatcher("/home").forward(request,response);
+        if(service.create(multiFiles,((User) request.getSession(false).getAttribute("user")).getUserId())){
+            response.sendRedirect("/home");
         }else{
             request.setAttribute("remark","You can't load your photo!Please try again");
             request.getRequestDispatcher("/file.jsp").forward(request,response);
@@ -41,7 +42,8 @@ public class LoadFileServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        this.doGet(request,response);
     }
 }

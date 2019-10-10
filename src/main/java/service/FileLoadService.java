@@ -18,7 +18,7 @@ public class FileLoadService {
     public boolean create( List<FileItem> multiFiles, int id) {
         try {
             for(FileItem item : multiFiles) {
-                item.write(new File("D:/git/new/MyTestProject/src/main/webapp/profilePhoto/" + item.getName()));
+                item.write(new File("C:/Git/MyTestProject/src/main/webapp/profilePhoto/" + item.getName()));
 
                 if(dao.add(item.getName(),id))
                     return  true;
@@ -29,7 +29,10 @@ public class FileLoadService {
         return false;
     }
 
+
+
     public String read(int id) {
         return dao.read(id);
     }
 }
+

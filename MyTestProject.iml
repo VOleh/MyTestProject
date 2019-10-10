@@ -33,7 +33,17 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://D:/apache-tomcat-8.5.46/lib/jstl-1.2.jar!/" />
+          <root url="file://C:/apache-tomcat-8.5.46/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://C:/apache-tomcat-8.5.46/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://C:/apache-tomcat-8.5.46/lib/jsp-api.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -42,7 +52,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://D:/apache-tomcat-8.5.46/lib/jstl-impl.jar!/" />
+          <root url="jar://C:/apache-tomcat-8.5.46/lib/jstl-1.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -51,7 +61,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://D:/apache-tomcat-8.5.46/lib/jstl-standard.jar!/" />
+          <root url="jar://C:/apache-tomcat-8.5.46/lib/jstl-standard.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -60,7 +70,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://D:/apache-tomcat-8.5.46/lib/servlet-api.jar!/" />
+          <root url="jar://C:/apache-tomcat-8.5.46/lib/servlet-api.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

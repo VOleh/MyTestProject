@@ -18,28 +18,23 @@ public class ProfilePageServlet extends HttpServlet {
 
     private UserService service = new UserService();
     private PostService postService = new PostService();
+    private HttpSession oldHttpSession;
+    private User user;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        this.doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         oldHttpSession = request.getSession(false);
 
-        HttpSession oldSession = request.getSession(false);
-        System.out.println("Session id "+oldSession.getAttribute("currentId"));
-        User user = service.readById( (Integer) oldSession.getAttribute("currentId"));
-        if(user !=null)
-            oldSession.invalidate();
-        HttpSession newHttpSession = request.getSession(true);
+        if((Integer) oldHttpSession.getAttribute("currentId") != null) {
+            user = service.readById((Integer) oldHttpSession.getAttribute("currentId"));
 
-        newHttpSession.setAttribute("user",user);
-        newHttpSession.setAttribute("posts", postService.read(user.getUserId()));
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/main.jsp");
-        response.setStatus(200);
-        dispatcher.forward(request, response);
-
-
-
+            HttpSession newHttpSession = request.getSession(true);
+            newHttpSession.setAttribute("user", user);
+            newHttpSession.setAttribute("posts", postService.read(user.getUserId()));
+        }
+        request.getRequestDispatcher("/main.jsp").forward(request, response);
     }
 }
