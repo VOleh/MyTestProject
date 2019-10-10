@@ -20,7 +20,7 @@ public class EditInterestsServlet extends HttpServlet {
     private InterestsService service = new InterestsService();
     private Interests interests;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         interests = new Interests();
         interests.setBooks(request.getParameter("books"));
         interests.setFilms(request.getParameter("films"));
@@ -31,11 +31,12 @@ public class EditInterestsServlet extends HttpServlet {
 
         if(service.update(interests,((User)request.getSession(false).getAttribute("user")).getUserId())) {
             request.setAttribute("description","Your data successfully updated!");
-            request.getRequestDispatcher("/interestsUpdate.jsp").forward(request, response);
+            request.getRequestDispatcher("/home").forward(request, response);
         }
+
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doGet(request,response);
     }
 }

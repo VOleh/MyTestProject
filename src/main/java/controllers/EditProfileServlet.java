@@ -3,6 +3,7 @@ package controllers;
 import model.Contacts;
 import model.User;
 import service.ContactsService;
+import service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,11 +13,17 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "ProfileEditServlet" ,urlPatterns = {"/edit-profile"})
-public class ProfileEditServlet extends HttpServlet {
+public class EditProfileServlet extends HttpServlet {
     private ContactsService service = new ContactsService();
     private Contacts contacts;
+    private UserService userService;
+    private User user;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        this.doGet(request,response);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         contacts = new Contacts();
         contacts.setCountry(request.getParameter("country"));
         contacts.setHomeTown(request.getParameter("homeTown"));
@@ -24,10 +31,6 @@ public class ProfileEditServlet extends HttpServlet {
 
         if(service.update(contacts,((User)request.getSession().getAttribute("user")).getUserId()))
             request.setAttribute("description","Your data successfully updated!");
-            request.getRequestDispatcher("/profileUpdate.jsp").forward(request,response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+            request.getRequestDispatcher("/home").forward(request,response);
     }
 }

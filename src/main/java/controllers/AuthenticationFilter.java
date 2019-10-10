@@ -33,7 +33,10 @@ public class AuthenticationFilter implements Filter {
         if (nonNull(session) && nonNull(session.getAttribute("user"))){
             Role role = ((User)(session.getAttribute("user"))).getRole();
                 moveToMenu(request,response,role);
+
             filterChain.doFilter(request,response);
+
+
         }else if (nonNull(session.getAttribute("currentId"))) {
             moveToMenu(request, response, Role.valueOf((String) session.getAttribute("role")));
             filterChain.doFilter(request,response);

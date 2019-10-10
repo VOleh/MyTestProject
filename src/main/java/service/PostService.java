@@ -24,7 +24,8 @@ public class PostService  {
             } else {
                 StringBuilder url = new StringBuilder(idMessage+item.getName());
                 try {
-                    item.write(new File("D:/git/new/MyTestProject/src/main/webapp/profilePhoto/" + url));
+                    item.write(new File("C:/Git/MyTestProject/src/main/webapp/profilePhoto/" + url));
+
 
                     return dao.addPhoto(url.toString(),idMessage);
                 } catch (Exception e) {
@@ -39,3 +40,4 @@ public class PostService  {
         return dao.readMessage(id);
     }
 }
+

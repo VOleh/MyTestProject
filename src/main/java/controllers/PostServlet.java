@@ -36,7 +36,7 @@ public class PostServlet extends HttpServlet {
             e.printStackTrace();
         }
         if(service.addMessage(items,((User)request.getSession(false).getAttribute("user")).getUserId()))
-            request.getRequestDispatcher("/");
+            response.sendRedirect("/home");
 
 
 
